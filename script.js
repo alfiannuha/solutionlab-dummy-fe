@@ -18,7 +18,7 @@ formData.append('grant_type', 'authorization_code');
 formData.append('code', code);
 formData.append('client_secret', 'secret'); // Add your client secret here
 formData.append('client_id', 'solutionlab');
-formData.append('redirect_uri', 'http://127.0.0.1:5500/index.html');
+formData.append('redirect_uri', 'https://solutionlab-dummy-fe.vercel.app');
 console.log("formData: ", Object.fromEntries(formData));
 
 
