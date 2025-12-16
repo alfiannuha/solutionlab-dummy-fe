@@ -1,6 +1,6 @@
 // DOM elements
 const loginSection = document.getElementById('login-section');
-const statusSection = document.getElementById('status-section');
+const verifySection = document.getElementById('verify-section');
 const statusDiv = document.getElementById('status');
 const loginBtn = document.getElementById('login-btn');
 
@@ -13,14 +13,27 @@ const AUTH_URL = `https://account.xignature.dev/api/oauth/authorize?client_id=so
 // Get query parameters from the URL
 const urlParams = new URLSearchParams(window.location.search);
 const code = urlParams.get('code');
+const error = urlParams.get('error');
+const errorDescription = urlParams.get('error_description');
 // const client_id = urlParams.get('client_id');
 // const redirect_uri = urlParams.get('redirect_uri');
 
+// Handle kondisi error dari OAuth (misal: user denied access)
+if (error) {
+  loginSection.style.display = 'none';
+  verifySection.classList.remove('hidden');
+
+  statusDiv.textContent = `Error: ${errorDescription || 'Access denied.'}`;
+  statusDiv.classList.add('success-box'); // biar warna hijau jika perlu, atau tetap merah untuk error
+  // Jika ingin tetap merah untuk error:
+  statusDiv.classList.remove('success-box'); // pastikan tidak ada kelas success
+}
+
 // Validate required parameters
-if (code) {
+else if (code) {
   // Code exists: Exchange it for a token
   loginSection.style.display = 'none';
-  statusSection.style.display = 'block';
+  verifySection.classList.remove('hidden');
   exchangeCodeForToken(code, CLIENT_ID, REDIRECT_URI);
 } else {
   // No code: Show login button
