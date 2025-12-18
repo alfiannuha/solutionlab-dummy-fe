@@ -5,9 +5,9 @@ const statusDiv = document.getElementById('status');
 const loginBtn = document.getElementById('login-btn');
 
 // OAuth Configuration (replace with your actual values)
-const CLIENT_ID = 'solutionlab'; // Replace with your real client_id
+const CLIENT_ID = '2a3943e7-289b-40a0-be3b-740ce8146d8c'; // Replace with your real client_id
 const REDIRECT_URI = encodeURIComponent(window.location.origin + window.location.pathname);
-const AUTH_URL = `https://account.xignature.dev/api/oauth/authorize?client_id=solutionlab&redirect_uri=https://solutionlab-dummy-fe.vercel.app&response_type=code&scope=openid&state=test123`;
+const AUTH_URL = `https://account.xignature.dev/api/oauth/authorize?client_id=2a3943e7-289b-40a0-be3b-740ce8146d8c&redirect_uri=https://solutionlab-dummy-fe.vercel.app&response_type=code&scope=openid&state=test123`;
 
 
 // Get query parameters from the URL
